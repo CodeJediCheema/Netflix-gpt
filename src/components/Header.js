@@ -1,16 +1,19 @@
-import { LOGO_URL, USER_ICON } from "../utils/constants";
+import { LOGO_URL, SUPPORTED_LANGUAGES, USER_ICON } from "../utils/constants";
 import {onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
+import { toggleGptSearchView } from "../utils/gptSlice";
+import { changeLanguage } from "../utils/configSlice";
 
 
 const Header = () =>{
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
+    const showGptSearch = useSelector((store)=> store.gpt.showGptSearch)
     
     
 
@@ -49,15 +52,46 @@ const Header = () =>{
 
     },[]);
 
+    const handleGptSearchClick = () =>{
+      // Toggle
+      dispatch(toggleGptSearchView());
+    };
+
+    const handleLanguageChange = (e) =>{
+      // console.log(e.target.value);
+      dispatch(changeLanguage(e.target.value));
+
+    }
+
 
 
 
     return <div className="absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between"> 
+
+
         <div className="w-44 mx-4 my-2 shadow-md">
             <img src={LOGO_URL} alt="logo" />
         </div>
-       { user && (<div className="flex p-6">
-            <img  className= "w-10 h-10" src={USER_ICON} alt="user icon"/>
+
+
+       { user && ( <div className="flex p-6">
+
+          { showGptSearch && 
+            <select className="p-2 m-2 bg-gray-900 text-white" onChange={handleLanguageChange}>
+              {SUPPORTED_LANGUAGES.map((lang) => <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
+              
+              
+            </select>}
+
+
+            <button className=" mx-4 bg-gradient-to-b from-purple-600
+             to-purple-700 hover:from-purple-700 hover:to-purple-500
+              text-white font-bold ml-2
+               hover:text-white hover:shadow-md rounded-lg py-2 
+               px-4 transition-all duration-300 ease-in-out " onClick={handleGptSearchClick}>{showGptSearch ? "Homepage" : "GPT Search"}</button>
+
+            <img  className= "w-10 h-10 ml-1 mr-2" src={USER_ICON} alt="user icon"/>
+
             <button onClick={handleSignOut} className="bg-gradient-to-b from-red-500
              to-red-700 hover:from-red-700 hover:to-red-500
               text-white font-bold ml-2
