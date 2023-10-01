@@ -39,19 +39,6 @@
 - Displayed the movies that include the searched movie name
 - Stored our secret API keys in .env file
 - Performed memoization to limit unnecessary data fetch requests
+- Make multilanguage support feature in gptsearch page
+- Make responsive for mobile phones and laptops 
 
-
-# Features
-- Login/SignUp
-    -SignIn/SignUp Form
-    -redirect to Browse Page
-- Browse(after Authentication)
-    -Header
-    -Main Movie
-        -Trailer in background
-        -Title & Description
-        -Movie Suggestions
-            -MovieList * N
--Netflix GPT
-    -Search Bar
-    -Movie suggestion

@@ -67,15 +67,13 @@ const Header = () =>{
 
 
 
-    return <div className="absolute w-screen bg-gradient-to-b from-black z-10 flex justify-between"> 
+    return <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between"> 
+
+            <img  className= "w-44 mx-auto md:mx-0"src={LOGO_URL} alt="logo" />
+      
 
 
-        <div className="w-44 mx-4 my-2 shadow-md">
-            <img src={LOGO_URL} alt="logo" />
-        </div>
-
-
-       { user && ( <div className="flex p-6">
+       { user && ( <div className="flex p-1 md:p-3 justify-between">
 
           { showGptSearch && 
             <select className="p-2 m-2 bg-gray-900 text-white" onChange={handleLanguageChange}>
@@ -85,23 +83,23 @@ const Header = () =>{
             </select>}
 
 
-            <button className=" mx-4 bg-gradient-to-b from-purple-600
+            <button className=" mx-2 bg-gradient-to-b from-purple-600
              to-purple-700 hover:from-purple-700 hover:to-purple-500
-              text-white font-bold ml-2
+              text-white font-semibold ml-2
                hover:text-white hover:shadow-md rounded-lg py-2 
-               px-4 transition-all duration-300 ease-in-out "
+               px-4 transition-all duration-300 ease-in-out m-2  md:m-0"
                 onClick={handleGptSearchClick}>{showGptSearch ? "Homepage" : "GPT Search"}
                 
                 </button>
 
-            <img  className= "w-10 h-10 ml-1 mr-2" src={USER_ICON} alt="user icon"/>
+            <img  className= "hidden md:block w-10 h-10 ml-1 mr-2" src={USER_ICON} alt="user icon"/>
 
             <button onClick={handleSignOut} className="bg-gradient-to-b from-red-500
              to-red-700 hover:from-red-700 hover:to-red-500
               text-white font-bold ml-2
                hover:text-white hover:shadow-md rounded-lg py-2 
-               px-4 transition-all duration-300 ease-in-out">
-                Sign Out
+               px-4 transition-all duration-300 ease-in-out m-2 md:m-0">
+                Logout
                 </button>
 
         </div>)

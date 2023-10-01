@@ -31,10 +31,10 @@ const VideoTitle = ({ title, overview }) => {
       <h1 className="text-2xl md:text-4xl font-bold">{title}</h1>
       <p className="hidden md:inline-block py-6 text-lg w-1/3">{overview}</p>
       <div className="my-4 md:m-0">
-        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out">
+        <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 md:py-4 px-4 md:px-12 rounded-lg transition duration-300 ease-in-out">
           ▷ Play
         </button>
-        <button className="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg ml-2 transition duration-300 ease-in-out">
+        <button className="hidden md:inline-block bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-lg ml-2 transition duration-300 ease-in-out">
           🛈 More Info
         </button>
       </div>
