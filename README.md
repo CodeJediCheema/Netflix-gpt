@@ -34,6 +34,11 @@
 - TMDB Image CDN URL
 - Made the Browse page amazing with Tailwind CSS
 - Made multiple custom hooks to display numerous types of data
+- Used gpt API's to search movies
+- Updated the store with that searched movies
+- Displayed the movies that include the searched movie name
+- Stored our secret API keys in .env file
+- Performed memoization to limit unnecessary data fetch requests
 
 
 # Features

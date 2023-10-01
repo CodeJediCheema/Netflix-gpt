@@ -1,10 +1,12 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/constants";
 import {addUpComingMovies } from "../utils/movieSlice";
 import { useEffect } from "react";
 
 
 const useUpComingMovies = () =>{
+
+    const upComingMovies = useSelector(store => store.movies.upComingMovies);
 
     const dispatch = useDispatch();
 
@@ -18,7 +20,7 @@ const useUpComingMovies = () =>{
     }
 
     useEffect(()=>{
-        getUpComingMovies();
+       !upComingMovies && getUpComingMovies();
 
     },[]);
 

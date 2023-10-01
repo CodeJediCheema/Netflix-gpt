@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { addUser, removeUser } from "../utils/userSlice";
-import { toggleGptSearchView } from "../utils/gptSlice";
+import { clearGptMovieResults, toggleGptSearchView } from "../utils/gptSlice";
 import { changeLanguage } from "../utils/configSlice";
 
 
@@ -55,6 +55,7 @@ const Header = () =>{
     const handleGptSearchClick = () =>{
       // Toggle
       dispatch(toggleGptSearchView());
+      dispatch(clearGptMovieResults());
     };
 
     const handleLanguageChange = (e) =>{
@@ -88,7 +89,10 @@ const Header = () =>{
              to-purple-700 hover:from-purple-700 hover:to-purple-500
               text-white font-bold ml-2
                hover:text-white hover:shadow-md rounded-lg py-2 
-               px-4 transition-all duration-300 ease-in-out " onClick={handleGptSearchClick}>{showGptSearch ? "Homepage" : "GPT Search"}</button>
+               px-4 transition-all duration-300 ease-in-out "
+                onClick={handleGptSearchClick}>{showGptSearch ? "Homepage" : "GPT Search"}
+                
+                </button>
 
             <img  className= "w-10 h-10 ml-1 mr-2" src={USER_ICON} alt="user icon"/>
 
